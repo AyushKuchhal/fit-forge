@@ -1,8 +1,9 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
+import { randomBytes } from 'node:crypto';
 import { Request, Response, NextFunction } from 'express';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'fitforge_dev_secret_key_2026';
+const JWT_SECRET = process.env.JWT_SECRET || randomBytes(32).toString('hex');
 
 export interface TokenPayload {
   userId: string;

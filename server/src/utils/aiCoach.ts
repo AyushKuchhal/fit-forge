@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { generateCoachAnswer, requiresRuleBasedResponse } from './coachModel';
 
 // In-Memory Rate Limiter: Max 20 requests per minute per IP
 interface RateLimitRecord {
@@ -149,11 +150,28 @@ export async function streamChatResponse(req: Request, res: Response) {
   }
 
   const { messages, userContext } = req.body;
-  if (!messages || !Array.isArray(messages) || messages.length === 0) {
+  if (!Array.isArray(messages) || messages.length === 0) {
     return res.status(400).json({ error: 'Valid messages array is required' });
   }
 
-  const lastUserMessage = messages[messages.length - 1].content;
+  const lastMessage = messages[messages.length - 1];
+  if (lastMessage?.role !== 'user' || typeof lastMessage.content !== 'string' ||
+      !lastMessage.content.trim() || lastMessage.content.length > 1000) {
+    return res.status(400).json({ error: 'A user message of 1 to 1000 characters is required' });
+  }
+  const lastUserMessage = lastMessage.content.trim();
+  const context: UserContext = {
+    goal: ['bulk', 'cut', 'maintain'].includes(userContext?.goal) ? userContext.goal : undefined,
+    weightKg: typeof userContext?.weightKg === 'number' && userContext.weightKg >= 30 &&
+      userContext.weightKg <= 300 ? userContext.weightKg : undefined,
+    dailyCalories: typeof userContext?.dailyCalories === 'number' && userContext.dailyCalories >= 1200 &&
+      userContext.dailyCalories <= 7000 ? userContext.dailyCalories : undefined,
+  };
+  const modelAnswer = requiresRuleBasedResponse(lastUserMessage)
+    ? null
+    : await generateCoachAnswer(lastUserMessage, context);
+  const fullAnswer = modelAnswer || getKnowledgeBaseResponse(lastUserMessage, context);
+  if (res.destroyed) return;
 
   // Set SSE Headers
   res.writeHead(200, {
@@ -162,9 +180,9 @@ export async function streamChatResponse(req: Request, res: Response) {
     'Connection': 'keep-alive',
     'X-Accel-Buffering': 'no',
     'Access-Control-Allow-Origin': '*',
+    'X-FitForge-Coach': modelAnswer ? 'model' : 'rules',
   });
 
-  const fullAnswer = getKnowledgeBaseResponse(lastUserMessage, userContext);
   const words = fullAnswer.split(' ');
 
   let index = 0;

@@ -102,7 +102,7 @@ export default function NutritionPage() {
 
   const fetchTodayMeals = async () => {
     try {
-      const res = await fetch('http://localhost:4000/api/meals/today');
+      const res = await fetch('/api/meals/today');
       const data = await res.json();
       if (data.success) {
         setMealSections(data.meals);
@@ -120,7 +120,7 @@ export default function NutritionPage() {
   useEffect(() => {
     const searchFoods = async () => {
       try {
-        let url = 'http://localhost:4000/api/foods';
+        let url = '/api/foods';
         const params = new URLSearchParams();
         if (searchQuery.trim()) params.append('search', searchQuery.trim());
         if (selectedCategory !== 'all') params.append('category', selectedCategory);
@@ -159,7 +159,7 @@ export default function NutritionPage() {
     };
 
     try {
-      const res = await fetch('http://localhost:4000/api/meals/add', {
+      const res = await fetch('/api/meals/add', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -178,7 +178,7 @@ export default function NutritionPage() {
 
   const handleDeleteFood = async (id: number) => {
     try {
-      const res = await fetch(`http://localhost:4000/api/meals/${id}`, {
+      const res = await fetch(`/api/meals/${id}`, {
         method: 'DELETE',
       });
       const data = await res.json();
@@ -198,7 +198,7 @@ export default function NutritionPage() {
     setAiParsedResult(null);
 
     try {
-      const res = await fetch('http://localhost:4000/api/ai/parse-meal', {
+      const res = await fetch('/api/ai/parse-meal', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: aiMealText }),
@@ -218,7 +218,7 @@ export default function NutritionPage() {
     if (!aiParsedResult || !aiParsedResult.items) return;
 
     for (const item of aiParsedResult.items) {
-      await fetch('http://localhost:4000/api/meals/add', {
+      await fetch('/api/meals/add', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

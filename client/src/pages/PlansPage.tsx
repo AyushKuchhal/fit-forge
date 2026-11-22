@@ -87,7 +87,7 @@ export default function PlansPage() {
   useEffect(() => {
     const fetchPlans = async () => {
       try {
-        let url = 'http://localhost:4000/api/plans';
+        let url = '/api/plans';
         const params = new URLSearchParams();
         if (selectedGoal !== 'all') params.append('goal', selectedGoal);
         if (selectedLevel !== 'all') params.append('level', selectedLevel);
@@ -111,7 +111,7 @@ export default function PlansPage() {
 
   const fetchPlanDetail = async (planId: string) => {
     try {
-      const res = await fetch(`http://localhost:4000/api/plans/${planId}`);
+      const res = await fetch(`/api/plans/${planId}`);
       const data = await res.json();
       if (data.success && data.plan) {
         setSelectedPlan(data.plan);
@@ -126,7 +126,7 @@ export default function PlansPage() {
     const fetchExercises = async () => {
       setLoading(true);
       try {
-        let url = 'http://localhost:4000/api/exercises';
+        let url = '/api/exercises';
         const params = new URLSearchParams();
         if (selectedMuscle !== 'all') params.append('muscle', selectedMuscle);
         if (selectedEquipment !== 'all') params.append('equipment', selectedEquipment);
@@ -157,7 +157,7 @@ export default function PlansPage() {
     localStorage.setItem('fitforge_completed_workouts', JSON.stringify(updated));
 
     try {
-      await fetch('http://localhost:4000/api/workouts/complete', {
+      await fetch('/api/workouts/complete', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

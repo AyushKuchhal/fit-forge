@@ -1,4 +1,4 @@
-import Database from 'better-sqlite3';
+import { DatabaseSync } from 'node:sqlite';
 import path from 'path';
 import fs from 'fs';
 
@@ -8,7 +8,19 @@ if (!fs.existsSync(dataDir)) {
 }
 
 const dbPath = path.join(dataDir, 'fitforge.db');
-const db = new Database(dbPath);
+const db = new DatabaseSync(dbPath);
+
+export function inTransaction<T>(operation: () => T): T {
+  db.exec('BEGIN');
+  try {
+    const result = operation();
+    db.exec('COMMIT');
+    return result;
+  } catch (error) {
+    db.exec('ROLLBACK');
+    throw error;
+  }
+}
 
 // Initialize All Tables
 db.exec(`

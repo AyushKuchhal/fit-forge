@@ -1,6 +1,7 @@
+import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv';
+import path from 'node:path';
 import db from './db';
 import { seedExercisesAndPlans } from './seedData';
 import { generatePersonalizedPlan, UserStatsInput } from './utils/fitnessCalculators';
@@ -13,8 +14,6 @@ import {
   authMiddleware,
   AuthenticatedRequest,
 } from './utils/auth';
-
-dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -149,6 +148,7 @@ app.delete('/api/progress/log/:id', authMiddleware, (req: AuthenticatedRequest, 
   try {
     const { id } = req.params;
     const userId = req.user?.userId || 'guest';
+    if (typeof id !== 'string') return res.status(400).json({ error: 'Log ID is required' });
     db.prepare('DELETE FROM weight_logs WHERE id = ? AND user_id = ?').run(id, userId);
     res.json({ success: true, message: 'Log deleted' });
   } catch (error: any) {
@@ -465,6 +465,12 @@ app.post('/api/ai/parse-meal', async (req, res) => {
 
 // ----------------- AI CHAT COACH ENDPOINT -----------------
 app.post('/api/ai/chat', streamChatResponse);
+
+const clientBuild = path.resolve(__dirname, '../../client/dist');
+app.use(express.static(clientBuild));
+app.get(['/', '/generator', '/plans', '/nutrition', '/progress', '/chat', '/login'], (_req, res) => {
+  res.sendFile(path.join(clientBuild, 'index.html'));
+});
 
 app.listen(PORT, () => {
   console.log(`🚀 FitForge Server running on http://localhost:${PORT}`);

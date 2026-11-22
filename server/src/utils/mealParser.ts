@@ -42,17 +42,6 @@ export interface ParsedMealItem {
  * Intelligent parser that extracts quantity and matches foods against database
  */
 export async function parseMealText(text: string): Promise<ParsedMealItem[]> {
-  const apiKey = process.env.LLM_API_KEY;
-
-  // If user provided a real LLM API key, we can try calling it
-  if (apiKey && apiKey !== 'your_llm_api_key_here' && apiKey.length > 10) {
-    try {
-      // LLM call can be performed here
-    } catch (e) {
-      console.warn('LLM parse failed, falling back to heuristic parser:', e);
-    }
-  }
-
   // Robust heuristic parser: split text by commas, 'and', '+', or newlines
   const segments = text
     .split(/,|\band\b|\+|\n/gi)

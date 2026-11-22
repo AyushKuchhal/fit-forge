@@ -1,5 +1,5 @@
 // scripts/seed.ts
-import Database from 'better-sqlite3';
+import { DatabaseSync } from 'node:sqlite';
 import path from 'path';
 import fs from 'fs';
 
@@ -11,7 +11,7 @@ if (!fs.existsSync(dataDir)) {
 
 // SQLite DB file
 const dbPath = path.join(dataDir, 'fitforge.db');
-const db = new Database(dbPath);
+const db = new DatabaseSync(dbPath);
 
 // Create tables
 db.exec(`

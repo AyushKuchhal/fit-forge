@@ -1,4 +1,4 @@
-import db from './db';
+import db, { inTransaction } from './db';
 
 export function seedExercisesAndPlans() {
   const existingExercises = db.prepare('SELECT COUNT(*) as count FROM exercises').get() as { count: number };
@@ -68,12 +68,11 @@ export function seedExercisesAndPlans() {
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
   `);
 
-  const insertManyEx = db.transaction((items) => {
-    for (const item of items) {
+  inTransaction(() => {
+    for (const item of exercises) {
       insertEx.run(item.name, item.muscle_group, item.equipment, item.difficulty, item.default_sets, item.default_reps, item.rest_seconds, item.form_tip);
     }
   });
-  insertManyEx(exercises);
 
   // Now Seed Pre-built Workout Plans
   const plans = [
@@ -358,7 +357,7 @@ export function seedExercisesAndPlans() {
     VALUES (?, ?, ?, ?, ?, ?)
   `);
 
-  const seedPlansTx = db.transaction(() => {
+  inTransaction(() => {
     for (const plan of plans) {
       insertPlan.run(plan.id, plan.name, plan.goal, plan.level, plan.split, plan.description, plan.days_count);
       for (const day of plan.days) {
@@ -371,6 +370,5 @@ export function seedExercisesAndPlans() {
     }
   });
 
-  seedPlansTx();
   console.log(`✅ Seeded ${exercises.length} exercises and ${plans.length} detailed workout plans.`);
 }

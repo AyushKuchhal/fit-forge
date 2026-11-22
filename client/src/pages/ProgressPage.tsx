@@ -75,7 +75,7 @@ export default function ProgressPage() {
     setLoading(true);
     try {
       const token = localStorage.getItem('fitforge_token');
-      const res = await fetch('http://localhost:4000/api/progress/logs', {
+      const res = await fetch('/api/progress/logs', {
         headers: token ? { Authorization: `Bearer ${token}` } : {},
       });
       const data = await res.json();
@@ -108,7 +108,7 @@ export default function ProgressPage() {
     const token = localStorage.getItem('fitforge_token');
 
     try {
-      const res = await fetch('http://localhost:4000/api/progress/log', {
+      const res = await fetch('/api/progress/log', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -137,7 +137,7 @@ export default function ProgressPage() {
   const handleDeleteLog = async (id: number) => {
     const token = localStorage.getItem('fitforge_token');
     try {
-      await fetch(`http://localhost:4000/api/progress/log/${id}`, {
+      await fetch(`/api/progress/log/${id}`, {
         method: 'DELETE',
         headers: token ? { Authorization: `Bearer ${token}` } : {},
       });
