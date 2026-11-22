@@ -1,0 +1,259 @@
+[
+  {
+    "version": "v1",
+    "question": "I train four days a week. How should I recover between sessions?",
+    "profile": {
+      "weightKg": 78
+    },
+    "user_prompt": "Profile: {\"weightKg\":78}\nQuestion: I train four days a week. How should I recover between sessions?",
+    "settings": {
+      "model": "fitforge-coach",
+      "temperature": 0,
+      "seed": 42,
+      "max_tokens": 180
+    },
+    "status": 200,
+    "output": "To recover effectively between your four training sessions, consider the following strategies:\n\n1. **Hydration**: Drink plenty of water before, during, and after your workouts. Aim for at least 2-3 liters of water per day, especially if you're sweating a lot during your workouts.\n\n2. **Protein**: Consume a protein-rich meal or shake within 30 minutes to an hour after your workout to help repair and rebuild muscle tissue.\n\n3. **Sleep**: Ensure you get at least 7-8 hours of quality sleep each night. This is crucial for muscle recovery and overall health.\n\n4. **Rest**: Allow your body to rest and recover by taking at least one day off per week. This is particularly important if you're training four times a week.\n\n5. **Hydration**: Continue to drink water throughout the day, especially if you're sweating a lot during your",
+    "usable_structure": false
+  },
+  {
+    "version": "v1",
+    "question": "What is the capital of France?",
+    "profile": {},
+    "user_prompt": "Profile: {}\nQuestion: What is the capital of France?",
+    "settings": {
+      "model": "fitforge-coach",
+      "temperature": 0,
+      "seed": 42,
+      "max_tokens": 180
+    },
+    "status": 200,
+    "output": "The capital of France is Paris.",
+    "usable_structure": false
+  },
+  {
+    "version": "v1",
+    "question": "How can I make my push-ups harder?",
+    "profile": {},
+    "user_prompt": "Profile: {}\nQuestion: How can I make my push-ups harder?",
+    "settings": {
+      "model": "fitforge-coach",
+      "temperature": 0,
+      "seed": 42,
+      "max_tokens": 180
+    },
+    "status": 200,
+    "output": "To make your push-ups harder, you can try the following techniques:\n\n1. **Increase the Range of Motion**: Push your chest further away from the ground by bending your elbows more. This will make the push-up harder as you have to use more muscle to lift your body.\n\n2. **Use a Dumbbell**: Hold a dumbbell in your hands. This will increase the weight you are lifting and make the push-up harder.\n\n3. **Add Resistance**: Use a resistance band or a weight vest. These will add resistance to your push-ups, making them harder.\n\n4. **Use a Chair**: Place a chair behind you. This will make the push-up harder as you have to use your legs to lift your body off the chair.\n\n5. **Do Plyometric Push-Ups**: This involves performing a regular push-up and then immediately performing a jump. This will make the push",
+    "usable_structure": false
+  },
+  {
+    "version": "v2",
+    "question": "I train four days a week. How should I recover between sessions?",
+    "profile": {
+      "weightKg": 78
+    },
+    "user_prompt": "Profile: {\"weightKg\":78}\nQuestion: I train four days a week. How should I recover between sessions?",
+    "settings": {
+      "model": "fitforge-coach",
+      "temperature": 0,
+      "seed": 42,
+      "max_tokens": 180
+    },
+    "status": 200,
+    "output": "To recover effectively between your four training sessions, consider incorporating a combination of rest, active recovery, and proper nutrition. Here’s a concrete next step:\n\n1. **Active Recovery**: Engage in light physical activity that doesn’t push your body too hard. This could be a short walk, yoga, or light stretching. This helps to flush out lactic acid and reduce muscle soreness.\n\n2. **Nutrition**: Focus on a balanced diet that includes plenty of protein to help muscle recovery and carbohydrates to provide energy. Ensure you’re getting enough sleep as well, which is crucial for muscle recovery and overall health.\n\n3. **Hydration**: Stay hydrated by drinking plenty of water throughout the day. Proper hydration is essential for muscle recovery and overall health.\n\n4. **Rest**: Make sure you get adequate rest. Aim for 7-9 hours of sleep per night, which is important for muscle",
+    "usable_structure": false
+  },
+  {
+    "version": "v2",
+    "question": "What is the capital of France?",
+    "profile": {},
+    "user_prompt": "Profile: {}\nQuestion: What is the capital of France?",
+    "settings": {
+      "model": "fitforge-coach",
+      "temperature": 0,
+      "seed": 42,
+      "max_tokens": 180
+    },
+    "status": 200,
+    "output": "The capital of France is Paris.\n\nNext step: If you're interested in learning more about fitness or have specific questions about exercise, diet, or general health, feel free to ask!",
+    "usable_structure": false
+  },
+  {
+    "version": "v2",
+    "question": "How can I make my push-ups harder?",
+    "profile": {},
+    "user_prompt": "Profile: {}\nQuestion: How can I make my push-ups harder?",
+    "settings": {
+      "model": "fitforge-coach",
+      "temperature": 0,
+      "seed": 42,
+      "max_tokens": 180
+    },
+    "status": 200,
+    "output": "To make your push-ups harder, you can try the following:\n\n1. **Increase the Weight**: Use a weighted vest or add dumbbells to your arms. This will increase the resistance and make the push-ups more challenging.\n\n2. **Add a Push-Up to Your Routine**: Incorporate a push-up into your workout routine. Start with a modified version and gradually increase the difficulty as you get stronger.\n\n3. **Use a Stability Ball**: Place a stability ball under your feet. This will increase the difficulty as you need to maintain balance and engage your core muscles.\n\n4. **Increase the Number of Reps**: Try to increase the number of push-ups you can do in a set time. This can help you build strength and endurance.\n\n5. **Focus on Form**: Ensure you are performing each push-up correctly. Focus on keeping your body straight and engaging your core to maintain balance.",
+    "usable_structure": false
+  },
+  {
+    "version": "v3",
+    "question": "I train four days a week. How should I recover between sessions?",
+    "profile": {
+      "weightKg": 78
+    },
+    "user_prompt": "Profile: {\"weightKg\":78}\nQuestion: I train four days a week. How should I recover between sessions?",
+    "settings": {
+      "model": "fitforge-coach",
+      "temperature": 0,
+      "seed": 42,
+      "max_tokens": 180
+    },
+    "status": 200,
+    "output": "Recovery should include adequate sleep, hydration, and a balanced diet.",
+    "usable_structure": false
+  },
+  {
+    "version": "v3",
+    "question": "What is the capital of France?",
+    "profile": {},
+    "user_prompt": "Profile: {}\nQuestion: What is the capital of France?",
+    "settings": {
+      "model": "fitforge-coach",
+      "temperature": 0,
+      "seed": 42,
+      "max_tokens": 180
+    },
+    "status": 200,
+    "output": "The capital of France is Paris.",
+    "usable_structure": false
+  },
+  {
+    "version": "v3",
+    "question": "How can I make my push-ups harder?",
+    "profile": {},
+    "user_prompt": "Profile: {}\nQuestion: How can I make my push-ups harder?",
+    "settings": {
+      "model": "fitforge-coach",
+      "temperature": 0,
+      "seed": 42,
+      "max_tokens": 180
+    },
+    "status": 200,
+    "output": "To make your push-ups harder, try adding weight or doing them with a resistance band.",
+    "usable_structure": false
+  },
+  {
+    "version": "v4",
+    "question": "I train four days a week. How should I recover between sessions?",
+    "profile": {
+      "weightKg": 78
+    },
+    "user_prompt": "Profile: {\"weightKg\":78}\nQuestion: I train four days a week. How should I recover between sessions?",
+    "settings": {
+      "model": "fitforge-coach",
+      "temperature": 0,
+      "seed": 42,
+      "max_tokens": 180,
+      "response_format": {
+        "type": "json_schema",
+        "json_schema": {
+          "name": "fitforge_reply",
+          "strict": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "answer": {
+                "type": "string"
+              },
+              "next_step": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "answer",
+              "next_step"
+            ],
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    "status": 200,
+    "output": "{\"answer\":\"You can recover by getting adequate sleep, eating a balanced diet, and engaging in light physical activity such as walking or yoga. Make sure to also manage stress through relaxation techniques or meditation.\",\"next_step\":\"Discuss your recovery methods with a fitness professional for personalized advice.\"}",
+    "usable_structure": true
+  },
+  {
+    "version": "v4",
+    "question": "What is the capital of France?",
+    "profile": {},
+    "user_prompt": "Profile: {}\nQuestion: What is the capital of France?",
+    "settings": {
+      "model": "fitforge-coach",
+      "temperature": 0,
+      "seed": 42,
+      "max_tokens": 180,
+      "response_format": {
+        "type": "json_schema",
+        "json_schema": {
+          "name": "fitforge_reply",
+          "strict": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "answer": {
+                "type": "string"
+              },
+              "next_step": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "answer",
+              "next_step"
+            ],
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    "status": 200,
+    "output": "{\"answer\":\"The capital of France is Paris.\",\"next_step\":\"What else would you like to know about France?\"}",
+    "usable_structure": true
+  },
+  {
+    "version": "v4",
+    "question": "How can I make my push-ups harder?",
+    "profile": {},
+    "user_prompt": "Profile: {}\nQuestion: How can I make my push-ups harder?",
+    "settings": {
+      "model": "fitforge-coach",
+      "temperature": 0,
+      "seed": 42,
+      "max_tokens": 180,
+      "response_format": {
+        "type": "json_schema",
+        "json_schema": {
+          "name": "fitforge_reply",
+          "strict": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "answer": {
+                "type": "string"
+              },
+              "next_step": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "answer",
+              "next_step"
+            ],
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    "status": 200,
+    "output": "{\"answer\":\"You can make your push-ups harder by adding weight or doing them against a wall or resistance band.\",\"next_step\":\"Try adding weight or using a resistance band for an extra challenge.\"}",
+    "usable_structure": true
+  }
+]

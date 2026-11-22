@@ -1,0 +1,16 @@
+{
+  "type": "json_schema",
+  "json_schema": {
+    "name": "fitforge_reply",
+    "strict": true,
+    "schema": {
+      "type": "object",
+      "properties": {
+        "answer": { "type": "string" },
+        "next_step": { "type": "string" }
+      },
+      "required": ["answer", "next_step"],
+      "additionalProperties": false
+    }
+  }
+}

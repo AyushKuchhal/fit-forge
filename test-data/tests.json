@@ -490,8 +490,8 @@
         "userId": "guest",
         "email": "guest@fitforge.local",
         "isGuest": true,
-        "iat": 1795349995,
-        "exp": 1797941995
+        "iat": 1795350942,
+        "exp": 1797942942
       }
     }
   },
@@ -504,12 +504,12 @@
       "weightKg": 20
     },
     "expected": "HTTP 200 and new log ID",
-    "actual": "HTTP 200; log ID 2",
+    "actual": "HTTP 200; log ID 4",
     "passed": true,
     "status": 200,
     "output": {
       "success": true,
-      "id": 2,
+      "id": 4,
       "message": "Weight logged successfully"
     }
   },
@@ -573,6 +573,56 @@
     "status": 400,
     "output": {
       "error": "A user message of 1 to 1000 characters is required"
+    }
+  },
+  {
+    "number": 14,
+    "kind": "Normal",
+    "input": "Coach: recovery between four training days",
+    "path": "/api/ai/chat",
+    "payload": {
+      "messages": [
+        {
+          "role": "user",
+          "content": "I train four days a week. How should I recover between sessions?"
+        }
+      ],
+      "userContext": {
+        "weightKg": 78
+      }
+    },
+    "expected": "Two labelled lines from the model, including one next action",
+    "actual": "Source=model; Answer: You should aim for at least 7-8 hours of sleep per night and incorporate active recovery methods such as walking or yoga to hel",
+    "passed": true,
+    "status": 200,
+    "output": {
+      "text": "Answer: You should aim for at least 7-8 hours of sleep per night and incorporate active recovery methods such as walking or yoga to help your body recover between training sessions.\nNext step: Discuss active recovery options with your coach.",
+      "source": "model",
+      "done": true
+    }
+  },
+  {
+    "number": 15,
+    "kind": "Edge",
+    "input": "Coach: asks for a city fact outside fitness",
+    "path": "/api/ai/chat",
+    "payload": {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is the capital of France?"
+        }
+      ],
+      "userContext": {}
+    },
+    "expected": "Model sets a fitness scope without answering Paris",
+    "actual": "Source=model; Answer: The capital of France is Paris. Next step: What else would you like to know about France?",
+    "passed": false,
+    "status": 200,
+    "output": {
+      "text": "Answer: The capital of France is Paris.\nNext step: What else would you like to know about France?",
+      "source": "model",
+      "done": true
     }
   }
 ]

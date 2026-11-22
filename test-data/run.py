@@ -124,17 +124,27 @@ def two_lines(text):
 def run_versions():
     inputs = [(QUESTION, PROFILE), ("What is the capital of France?", {}), ("How can I make my push-ups harder?", {})]
     records = []
-    for version in ("v1", "v2", "v3"):
+    for version in ("v1", "v2", "v3", "v4"):
         system = (ROOT / "prompts" / version / "P1.txt").read_text(encoding="utf-8").strip()
         for question, profile in inputs:
             prompt = f"Profile: {json.dumps(profile, separators=(',', ':'))}\nQuestion: {question}"
             settings = dict(model="fitforge-coach", temperature=0, seed=42, max_tokens=180)
+            if version == "v4":
+                settings["response_format"] = json.loads((ROOT / "prompts/final/P1.schema.json").read_text(encoding="utf-8"))
             status, output = request(MODEL, {
                 **settings, "messages": [{"role": "system", "content": system}, {"role": "user", "content": prompt}],
             })
             text = output["choices"][0]["message"]["content"].strip() if status == 200 else str(output)
+            usable = two_lines(text)
+            if version == "v4" and status == 200:
+                try:
+                    reply = json.loads(text)
+                    usable = set(reply) == {"answer", "next_step"} and all(
+                        isinstance(value, str) and value.strip() for value in reply.values())
+                except (json.JSONDecodeError, TypeError, AttributeError):
+                    usable = False
             records.append(dict(version=version, question=question, profile=profile, user_prompt=prompt,
-                                settings=settings, status=status, output=text, two_labelled_lines=two_lines(text)))
+                                settings=settings, status=status, output=text, usable_structure=usable))
             print(version, question, status, text, flush=True)
     write("prompt-iterations.json", records)
 
